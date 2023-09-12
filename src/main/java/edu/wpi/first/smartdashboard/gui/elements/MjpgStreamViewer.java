@@ -32,7 +32,10 @@ public abstract class MjpgStreamViewer extends StaticWidget {
   private static final double BPS_TO_MBPS = 8.0 / 1024.0 / 1024.0;
 
   public final IntegerProperty rotateProperty = new IntegerProperty(this, "Degrees Rotation", 0);
-
+  public final IntegerProperty compressionProperty = new IntegerProperty(this, "Compression", -1);
+  public final IntegerProperty fpsProperty = new IntegerProperty(this, "FPS", -1);
+  public final IntegerProperty widthProperty = new IntegerProperty(this, "Width", -1);
+  public final IntegerProperty heightProperty = new IntegerProperty(this, "Height", -1);
   private double rotateAngleRad = 0;
   private long lastFPSCheck = 0;
   private int lastFPS = 0;
@@ -240,11 +243,24 @@ public abstract class MjpgStreamViewer extends StaticWidget {
       return cameraStream;
     }
 
+    public String formatStreamQualityProperties() {
+      String result;
+      int compression = compressionProperty.getValue();
+      int fps = fpsProperty.getValue();
+      int height = heightProperty.getValue();
+      int width = widthProperty.getValue();
+      result = compression > 0 ? "&compression=" + compression : "";
+      result += fps > 0 ? "&fps=" + fps : "";
+      result += height > 0 && width > 0 ? "&resolution=" + width + "x" + height : "";
+      return result;
+    }
+
     private InputStream getCameraStream() {
       for (String streamUrl : streamPossibleCameraUrls()
           .filter(s -> s.startsWith(STREAM_PREFIX))
           .map(s -> s.substring(STREAM_PREFIX.length()))
           .collect(Collectors.toSet())) {
+        streamUrl += formatStreamQualityProperties();
         System.out.println("Trying to connect to: " + streamUrl);
         try {
           URL url = new URL(streamUrl);

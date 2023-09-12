@@ -19,7 +19,8 @@ public class MjpgStreamViewerImpl extends MjpgStreamViewer {
 
   @Override
   public void onPropertyChanged(Property property) {
-    if (property == urlProperty) {
+    if (property == urlProperty || property == compressionProperty || property == fpsProperty
+                                || property == heightProperty || property == widthProperty) {
       url = STREAM_PREFIX + urlProperty.getValue();
       cameraChanged();
     }
