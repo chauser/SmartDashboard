@@ -50,7 +50,7 @@ public class CameraServerViewer extends MjpgStreamViewer {
           selectedCameraPathListener, true);
     } else if (property == compressionProperty || property == fpsProperty
                || property == heightProperty || property == widthProperty) {
-    cameraChanged();
+      cameraChanged();
     }
   }
 
