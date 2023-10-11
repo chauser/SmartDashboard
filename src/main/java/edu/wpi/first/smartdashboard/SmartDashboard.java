@@ -171,5 +171,39 @@ public class SmartDashboard {
       teamProp.setValue(teamNumber);
       monitor.setProgress(1000);
     }
+
+    
+    if (argParser.hasValue("ip")) {
+      monitor.setProgress(1000);
+      monitor.setNote("Connecting to robot at: " + argParser.getValue("ip"));
+      Robot.setHost(argParser.getValue("ip"));
+      System.out.println("IP: " + argParser.getValue("ip"));
+    } else {
+      NetworkTable.setDSClientEnabled(true);
+      try {
+        Thread.sleep(500);
+      } catch (InterruptedException e) {
+        // No harm if the sleep is interrupted
+      }
+      monitor.setProgress(800);
+      monitor.setNote("Getting Team Number");
+      StringProperty teamProp = frame.getPrefs().team;
+      String teamNumber = teamProp.getValue();
+
+      teamNumberLoop:
+      while (teamNumber.equals("0")) {
+          String input = JOptionPane.showInputDialog("Input Team Number\\Host");
+          if (input == null) {
+            break teamNumberLoop;
+          }
+          teamNumber = input;
+      }
+
+      monitor.setProgress(850);
+      monitor.setNote("Connecting to robot: " + teamNumber);
+      Robot.setHost(teamNumber);
+      teamProp.setValue(teamNumber);
+      monitor.setProgress(1000);
+    }
   }
 }
