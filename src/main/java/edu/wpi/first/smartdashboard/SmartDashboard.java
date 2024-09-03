@@ -1,5 +1,6 @@
 package edu.wpi.first.smartdashboard;
 
+import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.networktables.NetworkTablesJNI;
 import edu.wpi.first.smartdashboard.extensions.FileSniffer;
@@ -179,12 +180,6 @@ public class SmartDashboard {
       Robot.setHost(argParser.getValue("ip"));
       System.out.println("IP: " + argParser.getValue("ip"));
     } else {
-      NetworkTable.setDSClientEnabled(true);
-      try {
-        Thread.sleep(500);
-      } catch (InterruptedException e) {
-        // No harm if the sleep is interrupted
-      }
       monitor.setProgress(800);
       monitor.setNote("Getting Team Number");
       StringProperty teamProp = frame.getPrefs().team;

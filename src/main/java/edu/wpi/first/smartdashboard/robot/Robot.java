@@ -1,19 +1,10 @@
 package edu.wpi.first.smartdashboard.robot;
 
-<<<<<<< HEAD
 import java.util.function.Consumer;
 
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEvent;
 import edu.wpi.first.networktables.NetworkTableInstance;
-=======
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
-
-import edu.wpi.first.wpilibj.networktables.NetworkTable;
-import edu.wpi.first.wpilibj.tables.IRemoteConnectionListener;
-import edu.wpi.first.wpilibj.tables.ITable;
->>>>>>> 72dbfdf (Bug fixes including choosers that don't appear and livewindow widgets that don't appear (#185))
 
 /**
  * @author Joe
@@ -30,19 +21,12 @@ public class Robot {
   private static final NetworkTableInstance ntInstance = NetworkTableInstance.getDefault();
 
   static {
-<<<<<<< HEAD
     ntInstance.stopDSClient();
     ntInstance.startClient4(identity); 
   }
 
   public static void startDSClient() {
     ntInstance.startDSClient();
-=======
-    NetworkTable.setClientMode();
-    NetworkTable.setNetworkIdentity(identity);
-    NetworkTable.setDSClientEnabled(false);
-    NetworkTable.initialize();
->>>>>>> 72dbfdf (Bug fixes including choosers that don't appear and livewindow widgets that don't appear (#185))
   }
 
   public static void setTeam(int team) {

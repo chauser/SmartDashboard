@@ -93,11 +93,7 @@ public class LWSubsystem extends AbstractTableWidget {
       System.out.println(
           "\nSubsystem \"" + getFieldName() + "\" does not contain widget \"" + key + "\"");
       System.out.println("Table: " + value);
-<<<<<<< HEAD
       System.out.println("Type: " + value.getEntry(".type").getString(null));
-=======
-      System.out.println("Type: " + value.getString(".type", null));
->>>>>>> 72dbfdf (Bug fixes including choosers that don't appear and livewindow widgets that don't appear (#185))
       DataType dataType = DataType.getType(value);
       if (dataType != null) { 
         System.out.println(
@@ -120,11 +116,7 @@ public class LWSubsystem extends AbstractTableWidget {
         revalidate();
         repaint();
       } else {
-<<<<<<< HEAD
         System.out.println("Skipping: No registered dataType for type " + value.getEntry(".type").getString(null));
-=======
-        System.out.println("Skipping: No registered dataType for type " + value.getString(".type", null) );
->>>>>>> 72dbfdf (Bug fixes including choosers that don't appear and livewindow widgets that don't appear (#185))
       }
       System.out.println();
     } catch (InstantiationException | IllegalAccessException ex) {
