@@ -54,7 +54,6 @@ public class Robot {
     return _host;
   }
 
-
   public static NetworkTable getTable(String tableName) {
     return ntInstance.getTable(tableName);
   }
@@ -75,7 +74,6 @@ public class Robot {
       immediateNotify) {
     System.out.println("Adding connection listener");
     return ntInstance.addConnectionListener(true, listener);
-
   }
 
   public static void removeConnectionListener(int listenerHandle) {

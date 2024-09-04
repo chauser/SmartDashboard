@@ -60,10 +60,6 @@ public class SmartDashboard {
     NetworkTablesJNI.Helper.setExtractOnStaticLoad(false);
     CombinedRuntimeLoader.loadLibraries(SmartDashboard.class, "wpiutiljni", "ntcorejni");
 
-    // NetworkTablesJNI.getDefaultInstance();
-    var instance = NetworkTableInstance.getDefault();
-    instance.stopDSClient();
-
     try {
       SwingUtilities.invokeAndWait(new Runnable() {
         public void run() {
@@ -163,9 +159,8 @@ public class SmartDashboard {
           }
           teamNumber = input;
       }
-
-      
-      monitor.setProgress(900);
+   
+      monitor.setProgress(850);
       monitor.setNote("Connecting to robot: " + teamNumber);
       Robot.setHost(teamNumber);
       teamProp.setValue(teamNumber);
