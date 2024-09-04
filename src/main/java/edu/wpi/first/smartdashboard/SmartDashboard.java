@@ -141,12 +141,12 @@ public class SmartDashboard {
       // ignore; no harm if sleep is interrupted
     }
     if (argParser.hasValue("ip")) {
-      monitor.setProgress(800);
+      monitor.setProgress(850);
       monitor.setNote("Connecting to robot at: " + argParser.getValue("ip"));
       Robot.setHost(argParser.getValue("ip"));
       System.out.println("IP: " + argParser.getValue("ip"));
     } else {
-      monitor.setProgress(850);
+      monitor.setProgress(800);
       monitor.setNote("Getting Team Number");
       StringProperty teamProp = frame.getPrefs().team;
       String teamNumber = teamProp.getValue();
